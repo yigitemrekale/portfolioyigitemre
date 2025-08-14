@@ -13,7 +13,7 @@
 </head>
 <body>
 
-  <!-- Menü Butonu (Mobil) -->
+  <!-- Menü Butonu -->
   <button class="menu-toggle"><i class="ri-menu-line"></i></button>
 
   <!-- Sidebar -->
@@ -47,13 +47,14 @@
     </div>
   </div>
 
-  <!-- Ana İçerik -->
+  <!-- İçerik -->
   <main class="content">
     <section class="contact-section">
       <h2 class="section-title">İletişime Geç</h2>
       <p class="intro-text">Herhangi bir sorunuz veya iş birliği teklifiniz varsa aşağıdaki formdan bana ulaşabilirsiniz.</p>
 
-      <form name="contact" method="POST" data-netlify="true" class="contact-form">
+      <!-- Netlify Form -->
+      <form name="contact" method="POST" netlify class="contact-form">
         <input type="hidden" name="form-name" value="contact">
 
         <div class="form-group">
@@ -72,45 +73,10 @@
         </div>
 
         <button type="submit" class="btn-filled">Gönder</button>
-
-        <!-- Başarı / Hata mesajları -->
-        <p class="form-success" style="display:none;">Mesajınız başarıyla gönderildi!</p>
-        <p class="form-error" style="display:none;">Bir hata oluştu, lütfen tekrar deneyin.</p>
       </form>
     </section>
   </main>
 
-  <!-- JS -->
-  <script>
-    // Sidebar toggle mobil
-    const menuToggle = document.querySelector('.menu-toggle');
-    const sidebar = document.querySelector('.sidebar');
-    menuToggle.addEventListener('click', () => {
-      sidebar.classList.toggle('open');
-    });
-
-    // Netlify form JS
-    const form = document.querySelector('.contact-form');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const successMsg = form.querySelector('.form-success');
-      const errorMsg = form.querySelector('.form-error');
-
-      fetch('/', {
-        method: 'POST',
-        body: new FormData(form)
-      })
-      .then(() => {
-        successMsg.style.display = 'block';
-        errorMsg.style.display = 'none';
-        form.reset();
-      })
-      .catch(() => {
-        successMsg.style.display = 'none';
-        errorMsg.style.display = 'block';
-      });
-    });
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
