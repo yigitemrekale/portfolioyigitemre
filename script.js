@@ -12,3 +12,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const content = document.querySelector('.content');
   content.style.animation = 'slideDownFadeIn 1s ease forwards';
 });
+
+
+
+
